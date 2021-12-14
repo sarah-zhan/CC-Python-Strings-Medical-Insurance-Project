@@ -41,13 +41,14 @@ for record in medical_records:
 
 print(medical_records_clean)
 
+names = []
+ages = []
+bmis = []
+insurance_costs = []
+
 for records in medical_records_clean:
   records[0] = records[0].upper()
   print(records[0])
-  names = []
-  ages = []
-  bmis = []
-  insurance_costs = []
   names.append(records[0])
   ages.append(records[1])
   bmis.append(records[2])
@@ -56,3 +57,26 @@ print("Names: " + str(names))
 print("Ages: " + str(ages))
 print("BMI: " + str(bmis))
 print("Insurance costs: " + str(insurance_costs))
+
+total_bmi = 0
+for bmi in bmis:
+  total_bmi += float(bmi)
+
+average_bmi = total_bmi/len(bmis)
+print("Average BMI: " + str(average_bmi))
+
+new_is = []
+for i in insurance_costs:
+  i = i[1:]
+  new_is.append(i)
+print(new_is)
+
+total_insurance = 0
+for cost in new_is:
+  total_insurance += float(cost)
+
+average_insurance = total_insurance/len(new_is)
+print(average_insurance)
+
+for i in range(len(names)):
+  print(f"{names[i]} is {ages[i]} years old with a BMI of {bmis[i]} and an insurance cost of {insurance_costs[i]}")
